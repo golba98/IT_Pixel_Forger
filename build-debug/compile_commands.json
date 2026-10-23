@@ -1,0 +1,158 @@
+[
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/dgif_lib.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/dgif_lib.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/dgif_lib.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/dgif_lib.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/egif_lib.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/egif_lib.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/egif_lib.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/egif_lib.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/gifalloc.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/gifalloc.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/gifalloc.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/gifalloc.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/gif_err.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/gif_err.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/gif_err.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/gif_err.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/gif_hash.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/gif_hash.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/gif_hash.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/gif_hash.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/quantize.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/quantize.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/quantize.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/quantize.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/cc -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=gnu99 -w -o CMakeFiles/giflib.dir/third_party/giflib/openbsd-reallocarray.c.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/openbsd-reallocarray.c\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib/openbsd-reallocarray.c",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/giflib.dir/third_party/giflib/openbsd-reallocarray.c.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o CMakeFiles/itpixel_core.dir/src/core/MosaicEngine.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core/MosaicEngine.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core/MosaicEngine.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/itpixel_core.dir/src/core/MosaicEngine.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o CMakeFiles/itpixel_core.dir/src/core/GifExporter.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core/GifExporter.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core/GifExporter.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/itpixel_core.dir/src/core/GifExporter.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o CMakeFiles/itpixel_core.dir/src/core/Paths.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core/Paths.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core/Paths.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/itpixel_core.dir/src/core/Paths.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o CMakeFiles/it-pixel-cli.dir/src/cli/main.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/cli/main.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/cli/main.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/it-pixel-cli.dir/src/cli/main.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/core\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o CMakeFiles/it-pixel-cli.dir/src/cli/CliOptions.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/cli/CliOptions.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/cli/CliOptions.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/CMakeFiles/it-pixel-cli.dir/src/cli/CliOptions.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/itpixel_gui_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/../core\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o src/gui/CMakeFiles/itpixel_gui.dir/itpixel_gui_autogen/mocs_compilation.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/itpixel_gui_autogen/mocs_compilation.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/itpixel_gui_autogen/mocs_compilation.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/CMakeFiles/itpixel_gui.dir/itpixel_gui_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/itpixel_gui_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/../core\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o src/gui/CMakeFiles/itpixel_gui.dir/MainWindow.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/MainWindow.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/MainWindow.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/CMakeFiles/itpixel_gui.dir/MainWindow.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/itpixel_gui_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/../core\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o src/gui/CMakeFiles/itpixel_gui.dir/EngineWorker.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/EngineWorker.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/EngineWorker.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/CMakeFiles/itpixel_gui.dir/EngineWorker.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/itpixel_gui_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/../core\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o src/gui/CMakeFiles/itpixel_gui.dir/Theme.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/Theme.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/Theme.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/CMakeFiles/itpixel_gui.dir/Theme.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/it-pixel-gui_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o src/gui/CMakeFiles/it-pixel-gui.dir/it-pixel-gui_autogen/mocs_compilation.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/it-pixel-gui_autogen/mocs_compilation.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/it-pixel-gui_autogen/mocs_compilation.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/CMakeFiles/it-pixel-gui.dir/it-pixel-gui_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/it-pixel-gui_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o src/gui/CMakeFiles/it-pixel-gui.dir/main.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/main.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/gui/main.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/CMakeFiles/it-pixel-gui.dir/main.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DITPIXEL_REFERENCE_ASSET=\"\\\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../assets/reference/it.jpeg\\\"\" -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/cli\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../third_party/doctest\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_tests.dir/itpixel_tests_autogen/mocs_compilation.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/mocs_compilation.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/mocs_compilation.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_tests.dir/itpixel_tests_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DITPIXEL_REFERENCE_ASSET=\"\\\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../assets/reference/it.jpeg\\\"\" -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/cli\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../third_party/doctest\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_tests.dir/test_main.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/test_main.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/test_main.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_tests.dir/test_main.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DITPIXEL_REFERENCE_ASSET=\"\\\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../assets/reference/it.jpeg\\\"\" -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/cli\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../third_party/doctest\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_tests.dir/engine_tests.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/engine_tests.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/engine_tests.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_tests.dir/engine_tests.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DITPIXEL_REFERENCE_ASSET=\"\\\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../assets/reference/it.jpeg\\\"\" -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/cli\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../third_party/doctest\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_tests.dir/gif_tests.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/gif_tests.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/gif_tests.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_tests.dir/gif_tests.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DITPIXEL_REFERENCE_ASSET=\"\\\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../assets/reference/it.jpeg\\\"\" -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/cli\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../third_party/doctest\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_tests.dir/cli_tests.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/cli_tests.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/cli_tests.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_tests.dir/cli_tests.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DITPIXEL_REFERENCE_ASSET=\"\\\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../assets/reference/it.jpeg\\\"\" -DQT_CORE_LIB -DQT_GUI_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_tests_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/cli\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../third_party/doctest\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/third_party/giflib\" -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_tests.dir/__/src/cli/CliOptions.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/cli/CliOptions.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/src/cli/CliOptions.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_tests.dir/__/src/cli/CliOptions.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_gui_smoke_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/gui\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_gui_smoke.dir/itpixel_gui_smoke_autogen/mocs_compilation.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_gui_smoke_autogen/mocs_compilation.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_gui_smoke_autogen/mocs_compilation.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_gui_smoke.dir/itpixel_gui_smoke_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/itpixel_gui_smoke_autogen/include\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/../src/gui\" -I\"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/include\" -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wformat=2 -Wdouble-promotion -o tests/CMakeFiles/itpixel_gui_smoke.dir/gui_smoke.cpp.o -c \"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/gui_smoke.cpp\"",
+  "file": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/tests/gui_smoke.cpp",
+  "output": "/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/CMakeFiles/itpixel_gui_smoke.dir/gui_smoke.cpp.o"
+}
+]

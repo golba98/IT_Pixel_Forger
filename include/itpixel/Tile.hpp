@@ -10,10 +10,10 @@ struct Tile {
     std::uint8_t g{};
     std::uint8_t b{};
     double luminance{};
-    int x{};  // top-left corner in input-image coordinates
+    int x{}; // top-left corner in input-image coordinates
     int y{};
     int w{};
     int h{};
 };
 
-}  // namespace itpixel
+} // namespace itpixel

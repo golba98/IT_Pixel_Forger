@@ -1,9 +1,9 @@
 #pragma once
 
-#include <cstddef>
-#include <filesystem>
 #include <QImage>
 #include <QSize>
+#include <cstddef>
+#include <filesystem>
 
 namespace itpixel {
 
@@ -14,14 +14,14 @@ namespace itpixel {
 class GifExporter {
 public:
     struct Options {
-        int fps{25};        // playback speed; delay = round(100 / fps) centiseconds
-        int loopCount{0};   // 0 = loop forever (GIF NETSCAPE extension)
+        int fps{25};      // playback speed; delay = round(100 / fps) centiseconds
+        int loopCount{0}; // 0 = loop forever (GIF NETSCAPE extension)
     };
 
     // Returns nullopt with `error` set on failure.
-    [[nodiscard]] static std::optional<GifExporter> create(
-        const std::filesystem::path& path, QSize size, Options options,
-        std::string* error = nullptr);
+    [[nodiscard]] static std::optional<GifExporter> create(const std::filesystem::path& path,
+                                                           QSize size, Options options,
+                                                           std::string* error = nullptr);
 
     GifExporter(GifExporter&& other) noexcept;
     GifExporter& operator=(GifExporter&& other) noexcept;
@@ -44,4 +44,4 @@ private:
     Impl* impl_{};
 };
 
-}  // namespace itpixel
+} // namespace itpixel

@@ -1,0 +1,9 @@
+itpixel_tests_autogen/timestamp: \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/src/cli/CliOptions.cpp \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/src/cli/CliOptions.hpp \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/tests/CMakeLists.txt \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/tests/cli_tests.cpp \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/tests/engine_tests.cpp \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/tests/gif_tests.cpp \
+	/home/k9-vortex/Development/5-C++/4-IT\ Pixel\ Generator/tests/test_main.cpp \
+	/usr/bin/cmake

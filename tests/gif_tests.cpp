@@ -1,7 +1,7 @@
 #include "doctest.h"
 
-#include <filesystem>
 #include <cstring>
+#include <filesystem>
 #include <string>
 #include <vector>
 
@@ -26,8 +26,7 @@ struct DecodedGif {
     bool loopExtension{};
 };
 
-std::string decode(const std::filesystem::path& path, DecodedGif* out = nullptr)
-{
+std::string decode(const std::filesystem::path& path, DecodedGif* out = nullptr) {
     int error = GIF_OK;
     GifFileType* gif = DGifOpenFileName(path.string().c_str(), &error);
     if (gif == nullptr) {
@@ -66,8 +65,7 @@ std::string decode(const std::filesystem::path& path, DecodedGif* out = nullptr)
     return {};
 }
 
-QImage testFrame(int width, int height, int shade)
-{
+QImage testFrame(int width, int height, int shade) {
     QImage frame(width, height, QImage::Format_RGB888);
     for (int y = 0; y < height; ++y) {
         uchar* row = frame.scanLine(y);
@@ -80,17 +78,16 @@ QImage testFrame(int width, int height, int shade)
     return frame;
 }
 
-}  // namespace
+} // namespace
 
-TEST_CASE("GIF exporter writes a decodable animation")
-{
+TEST_CASE("GIF exporter writes a decodable animation") {
     QTemporaryDir dir;
     REQUIRE(dir.isValid());
     const auto path = std::filesystem::path(dir.path().toStdString()) / "anim.gif";
 
     std::string error;
-    auto exporter = itpixel::GifExporter::create(
-        path, QSize(32, 24), itpixel::GifExporter::Options{25, 0}, &error);
+    auto exporter = itpixel::GifExporter::create(path, QSize(32, 24),
+                                                 itpixel::GifExporter::Options{25, 0}, &error);
     REQUIRE(exporter.has_value());
 
     for (int i = 0; i < 5; ++i) {
@@ -114,31 +111,27 @@ TEST_CASE("GIF exporter writes a decodable animation")
     CHECK(decoded.loopExtension);
 }
 
-TEST_CASE("GIF exporter fails for unwritable paths")
-{
+TEST_CASE("GIF exporter fails for unwritable paths") {
     std::string error;
-    const auto exporter = itpixel::GifExporter::create(
-        "/nonexistent-directory-xyz/out.gif", QSize(8, 8),
-        itpixel::GifExporter::Options{25, 0}, &error);
+    const auto exporter =
+        itpixel::GifExporter::create("/nonexistent-directory-xyz/out.gif", QSize(8, 8),
+                                     itpixel::GifExporter::Options{25, 0}, &error);
     CHECK_FALSE(exporter.has_value());
     CHECK_FALSE(error.empty());
 }
 
-TEST_CASE("GIF exporter rejects mismatched frame sizes")
-{
+TEST_CASE("GIF exporter rejects mismatched frame sizes") {
     QTemporaryDir dir;
     REQUIRE(dir.isValid());
     const auto path = std::filesystem::path(dir.path().toStdString()) / "bad.gif";
     std::string error;
-    auto exporter =
-        itpixel::GifExporter::create(path, QSize(8, 8), {25, 0}, &error);
+    auto exporter = itpixel::GifExporter::create(path, QSize(8, 8), {25, 0}, &error);
     REQUIRE(exporter.has_value());
     CHECK_FALSE(exporter->addFrame(testFrame(16, 16, 0)));
     CHECK(exporter->finish());
 }
 
-TEST_CASE("full pipeline produces a decodable animated GIF")
-{
+TEST_CASE("full pipeline produces a decodable animated GIF") {
     QTemporaryDir dir;
     REQUIRE(dir.isValid());
     const auto path = std::filesystem::path(dir.path().toStdString()) / "pipeline.gif";
@@ -162,8 +155,8 @@ TEST_CASE("full pipeline produces a decodable animated GIF")
     itpixel::MosaicEngine engine(input.copy(), reference.copy(), settings);
 
     std::string error;
-    auto exporter = itpixel::GifExporter::create(
-        path, engine.canvasSize(), itpixel::GifExporter::Options{25, 0}, &error);
+    auto exporter = itpixel::GifExporter::create(path, engine.canvasSize(),
+                                                 itpixel::GifExporter::Options{25, 0}, &error);
     REQUIRE(exporter.has_value());
 
     const itpixel::FrameSink sink = [&exporter](const QImage& frame, bool isFinal) {
@@ -184,8 +177,7 @@ TEST_CASE("full pipeline produces a decodable animated GIF")
     CHECK(decoded.frames == 12 + 4 + 10 + 1);
 }
 
-TEST_CASE("final PNG and JPEG saving works through Qt image writers")
-{
+TEST_CASE("final PNG and JPEG saving works through Qt image writers") {
     QTemporaryDir dir;
     REQUIRE(dir.isValid());
     QImage image = testFrame(16, 16, 3);

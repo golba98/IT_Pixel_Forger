@@ -9,9 +9,9 @@
 #include <QString>
 
 #include "CliOptions.hpp"
+#include "Paths.hpp"
 #include "itpixel/GifExporter.hpp"
 #include "itpixel/MosaicEngine.hpp"
-#include "Paths.hpp"
 
 namespace {
 
@@ -24,13 +24,9 @@ constexpr int kExitUsage = 2;
 struct ConsoleCallbacks {
     int lastShownPercent = -1;
 
-    void status(std::string_view text)
-    {
-        std::cout << text << '\n';
-    }
+    void status(std::string_view text) { std::cout << text << '\n'; }
 
-    void progress(int percent)
-    {
+    void progress(int percent) {
         if (percent == lastShownPercent) {
             return;
         }
@@ -42,10 +38,9 @@ struct ConsoleCallbacks {
     }
 };
 
-}  // namespace
+} // namespace
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     QCoreApplication app(argc, argv);
     const std::string programName = "it-pixel-cli";
 
@@ -64,8 +59,7 @@ int main(int argc, char* argv[])
 
     // Seed: explicit or random. Print it so any run can be reproduced.
     std::random_device device;
-    const std::uint32_t seed =
-        options.seed.value_or(static_cast<std::uint32_t>(device()));
+    const std::uint32_t seed = options.seed.value_or(static_cast<std::uint32_t>(device()));
     options.settings.seed = seed;
 
     const QString inputPath = QString::fromStdString(options.input.string());
@@ -87,8 +81,7 @@ int main(int argc, char* argv[])
     } else {
         referencePath = QString::fromStdString(options.reference.string());
     }
-    QImage reference =
-        itpixel::MosaicEngine::loadImage(referencePath, &error).value_or(QImage());
+    QImage reference = itpixel::MosaicEngine::loadImage(referencePath, &error).value_or(QImage());
     if (reference.isNull()) {
         std::cerr << "Error: " << error.toStdString() << '\n';
         return kExitFailure;
@@ -96,8 +89,8 @@ int main(int argc, char* argv[])
 
     std::cout << "Input:      " << options.input.string() << " (" << input.width() << "x"
               << input.height() << ")\n"
-              << "Reference:  " << referencePath.toStdString() << " (resized to "
-              << input.width() << "x" << input.height() << ")\n"
+              << "Reference:  " << referencePath.toStdString() << " (resized to " << input.width()
+              << "x" << input.height() << ")\n"
               << "Output:     " << options.output.string() << "\n"
               << "Seed:       " << seed << '\n';
 
@@ -110,7 +103,7 @@ int main(int argc, char* argv[])
     std::string gifError;
     auto exporter = itpixel::GifExporter::create(
         options.output, engine.canvasSize(),
-        itpixel::GifExporter::Options{options.fps, /*loopCount=*/0}, &gifError);
+        itpixel::GifExporter::Options{.fps = options.fps, .loopCount = 0}, &gifError);
     if (!exporter) {
         std::cerr << "Error: " << gifError << '\n';
         return kExitFailure;
@@ -135,10 +128,9 @@ int main(int argc, char* argv[])
     };
 
     const bool completed = engine.run(
-        itpixel::EngineCallbacks{
-            [&](std::string_view text) { console.status(text); },
-            [&](int percent) { console.progress(percent); },
-            nullptr},
+        itpixel::EngineCallbacks{.status = [&](std::string_view text) { console.status(text); },
+                                 .progress = [&](int percent) { console.progress(percent); },
+                                 .cancelled = nullptr},
         sink);
 
     if (!completed) {
@@ -150,7 +142,7 @@ int main(int argc, char* argv[])
         return kExitFailure;
     }
 
-    std::cout << "Done. " << framesWritten << " frames written to "
-              << options.output.string() << '\n';
+    std::cout << "Done. " << framesWritten << " frames written to " << options.output.string()
+              << '\n';
     return kExitOk;
 }

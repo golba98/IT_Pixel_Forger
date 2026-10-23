@@ -92,15 +92,15 @@ private:
     void reportProgress(const EngineCallbacks& callbacks, int progress) const;
     void emitScanPreview(const FrameSink& sink, int scanY) const;
 
-    QImage input_;        // RGB888, the mosaic source material
-    QImage reference_;    // RGB888, resized to input size
-    QImage canvas_;       // working image, becomes the final mosaic
-    QImage dimmedInput_;  // brightness 0.3 copy for scan previews
+    QImage input_;       // RGB888, the mosaic source material
+    QImage reference_;   // RGB888, resized to input size
+    QImage canvas_;      // working image, becomes the final mosaic
+    QImage dimmedInput_; // brightness 0.3 copy for scan previews
     MosaicSettings settings_;
 
-    std::vector<Tile> tiles_;        // sorted by luminance (stable)
-    std::vector<double> tileLuminances_;  // parallel to tiles_ for binary search
-    std::vector<GridBlock> grid_;    // sorted by hue (stable)
+    std::vector<Tile> tiles_;            // sorted by luminance (stable)
+    std::vector<double> tileLuminances_; // parallel to tiles_ for binary search
+    std::vector<GridBlock> grid_;        // sorted by hue (stable)
 };
 
-}  // namespace itpixel
+} // namespace itpixel
