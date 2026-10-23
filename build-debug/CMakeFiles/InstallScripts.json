@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/cmake_install.cmake",
-		"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/src/gui/cmake_install.cmake",
-		"/home/k9-vortex/Development/5-C++/4-IT Pixel Generator/build-debug/tests/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
