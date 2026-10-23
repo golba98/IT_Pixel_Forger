@@ -14,10 +14,19 @@ end.
 
 ![GUI screenshot](docs/assets/screenshot.png)
 
-The animation below was produced by the CLI with the bundled reference
-image (blend 1.0, block size 2):
+The animation below shows a full transformation of the bundled tester
+image (procedurally generated, rights-free) using the default reference
+image — block size 2, blend 1.0, 15 fps:
 
 ![Example transformation](docs/assets/example.gif)
+
+Before and after:
+
+![Before and after comparison](docs/assets/before-after.png)
+
+The tester image itself, ready to experiment with:
+
+![Tester image](assets/samples/tester.png)
 
 ## Features
 
@@ -71,10 +80,11 @@ Desktop GUI:
 build/src/gui/it-pixel-gui
 ```
 
-Command line — generate an animated GIF of a full transformation:
+Command line — generate an animated GIF of a full transformation. No image
+handy? Start with the bundled tester image:
 
 ```bash
-build/it-pixel-cli path/to/input.png
+build/it-pixel-cli assets/samples/tester.png
 ```
 
 Useful options (see `it-pixel-cli --help` for all of them):
@@ -122,6 +132,7 @@ For the full picture see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ```text
 .
 ├── assets/reference/     bundled default reference image
+├── assets/samples/       tester image (rights-free)
 ├── include/itpixel/      public core headers
 ├── src/core/             mosaic engine, GIF exporter, path helpers
 ├── src/cli/              it-pixel-cli

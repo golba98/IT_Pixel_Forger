@@ -76,14 +76,15 @@ a fixed seed make assertions exact.
 
 ```text
 assets/reference/   default reference image (it.jpeg)
-cmake/             shared CMake helpers
-docs/              developer documentation and README assets
-include/itpixel/   public core-library headers
-src/core/          engine, GIF exporter, path helpers
-src/cli/           command line application
-src/gui/           desktop application (widgets, worker, theme)
-tests/             doctest suite + headless GUI smoke test
-third_party/       vendored giflib and doctest (both MIT)
+assets/samples/      tester image (procedurally generated, rights-free)
+cmake/               shared CMake helpers
+docs/                developer documentation and README assets
+include/itpixel/     public core-library headers
+src/core/            engine, GIF exporter, path helpers
+src/cli/             command line application
+src/gui/             desktop application (widgets, worker, theme)
+tests/               doctest suite + headless GUI smoke test
+third_party/         vendored giflib and doctest (both MIT)
 ```
 
 ## Benchmarks
