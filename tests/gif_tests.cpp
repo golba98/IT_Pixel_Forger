@@ -177,6 +177,31 @@ TEST_CASE("full pipeline produces a decodable animated GIF") {
     CHECK(decoded.frames == 12 + 4 + 10 + 1);
 }
 
+TEST_CASE("GIF exporter accepts fully solid frames")
+{
+    // A single-colour frame quantizes to a 1-entry palette; GIF requires a
+    // minimum 2-entry color map, which the exporter must round up to.
+    // Regression test: this previously failed at close time.
+    QTemporaryDir dir;
+    REQUIRE(dir.isValid());
+    const auto path = std::filesystem::path(dir.path().toStdString()) / "solid.gif";
+    std::string error;
+    auto exporter =
+        itpixel::GifExporter::create(path, QSize(16, 16), {25, 0}, &error);
+    REQUIRE(exporter.has_value());
+
+    QImage solid(16, 16, QImage::Format_RGB888);
+    solid.fill(qRgb(200, 40, 40));
+    for (int i = 0; i < 3; ++i) {
+        CHECK(exporter->addFrame(solid));
+    }
+    CHECK(exporter->finish());
+
+    DecodedGif decoded;
+    CHECK(decode(path, &decoded).empty());
+    CHECK(decoded.frames == 3);
+}
+
 TEST_CASE("final PNG and JPEG saving works through Qt image writers") {
     QTemporaryDir dir;
     REQUIRE(dir.isValid());

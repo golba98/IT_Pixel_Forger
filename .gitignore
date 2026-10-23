@@ -1,42 +1,48 @@
-# Python bytecode and caches
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
+# Build directories and caches
+build/
+build-*/
+_build/
+out/
+CMakeUserPresets.json
+compile_commands.json
+CMakeLists.txt.user
 
-# Virtual environments
-.venv/
-venv/
-env/
-ENV/
+# IDE and editor metadata
+.vscode/
+.idea/
+.vs/
+.codeql/
+.cache/
+*.swp
+*~
+
+# Compiler and linker artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Qt build artifacts
+moc_*.cpp
+qrc_*.cpp
+*.qmake
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated output (do not commit transformation results)
+*.gif.bak
+generated/
 
 # Environment and secrets
 .env
 .env.*
-!.env.example
 *.pem
 *.key
-*.cert
-secret.json
-
-# Build and packaging output
-build/
-dist/
-*.egg-info/
-
-# Logs and local runtime data
-*.log
-*.tmp
-*.sqlite
-*.sqlite3
-*.db
-
-# OS and editor files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-.claude/
-.codex/
