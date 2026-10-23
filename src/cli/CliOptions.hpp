@@ -15,12 +15,12 @@ namespace itpixel::cli {
 // it only normalizes and validates raw arguments.
 struct CliOptions {
     std::filesystem::path input;
-    std::filesystem::path output;     // resolved next to the input image by default
-    std::filesystem::path reference;  // empty = bundled default asset
+    std::filesystem::path output;    // resolved next to the input image by default
+    std::filesystem::path reference; // empty = bundled default asset
     MosaicSettings settings;
     int fps{25};
     int frameSample{1};
-    std::optional<std::uint32_t> seed;  // nullopt = random per run
+    std::optional<std::uint32_t> seed; // nullopt = random per run
 
     // `args` excludes the program name. `error` is a user-facing message.
     static std::expected<CliOptions, std::string> parse(const std::vector<std::string>& args);
@@ -28,4 +28,4 @@ struct CliOptions {
     static std::string helpText(const std::string& programName);
 };
 
-}  // namespace itpixel::cli
+} // namespace itpixel::cli

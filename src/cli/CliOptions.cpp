@@ -16,16 +16,14 @@ constexpr int kMaxBlock = 1'024;
 constexpr int kMinFps = 1;
 constexpr int kMaxFps = 50;
 
-bool parseInteger(const std::string& text, long long& out)
-{
+bool parseInteger(const std::string& text, long long& out) {
     const char* begin = text.c_str();
     const char* end = begin + text.size();
     auto [ptr, ec] = std::from_chars(begin, end, out);
     return ec == std::errc{} && ptr == end;
 }
 
-bool parseDouble(const std::string& text, double& out)
-{
+bool parseDouble(const std::string& text, double& out) {
     try {
         std::size_t consumed = 0;
         out = std::stod(text, &consumed);
@@ -35,14 +33,15 @@ bool parseDouble(const std::string& text, double& out)
     }
 }
 
-}  // namespace
+} // namespace
 
-std::string CliOptions::helpText(const std::string& programName)
-{
+std::string CliOptions::helpText(const std::string& programName) {
     return "IT Pixel Generator CLI - mosaic transformation with animated GIF export\n"
            "\n"
            "Usage:\n"
-           "  " + programName + " <input-image> [options]\n"
+           "  " +
+           programName +
+           " <input-image> [options]\n"
            "\n"
            "Options:\n"
            "  -o, --output <path>       Output GIF path (default: it_pixels_transform.gif\n"
@@ -62,8 +61,7 @@ std::string CliOptions::helpText(const std::string& programName)
            "  2  usage error\n";
 }
 
-std::expected<CliOptions, std::string> CliOptions::parse(const std::vector<std::string>& args)
-{
+std::expected<CliOptions, std::string> CliOptions::parse(const std::vector<std::string>& args) {
     CliOptions options;
     bool haveInput = false;
 
@@ -176,4 +174,4 @@ std::expected<CliOptions, std::string> CliOptions::parse(const std::vector<std::
     return options;
 }
 
-}  // namespace itpixel::cli
+} // namespace itpixel::cli

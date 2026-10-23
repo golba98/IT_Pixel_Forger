@@ -1,6 +1,7 @@
 #include "itpixel/GifExporter.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cerrno>
 #include <cstring>
 #include <vector>
@@ -9,10 +10,13 @@ extern "C" {
 #include "gif_lib.h"
 
 // Quantize lives in the vendored quantize.c but has no gif_lib.h prototype.
+// The declaration must match the upstream giflib signature exactly.
+// NOLINTBEGIN(readability-identifier-naming)
 int GifQuantizeBuffer(unsigned int Width, unsigned int Height, int* ColorMapSize,
                       const GifByteType* RedInput, const GifByteType* GreenInput,
                       const GifByteType* BlueInput, GifByteType* OutputBuffer,
                       GifColorType* OutputColorMap);
+// NOLINTEND(readability-identifier-naming)
 }
 
 namespace itpixel {
@@ -21,8 +25,7 @@ namespace {
 constexpr int kPaletteSize = 256;
 
 // Byte offset of a pixel inside an RGB888 row.
-inline std::size_t pixelOffset(int x)
-{
+inline std::size_t pixelOffset(int x) {
     return static_cast<std::size_t>(x) * 3;
 }
 
@@ -30,15 +33,15 @@ inline std::size_t pixelOffset(int x)
 constexpr int kDisposalKeep = 1;
 
 // The NETSCAPE2.0 application extension asks viewers to loop the animation.
-constexpr char kNetscapeId[] = "NETSCAPE2.0";
+constexpr char kNetscapeId[] = "NETSCAPE2.0"; // NOLINT(modernize-avoid-c-arrays)
 
-}  // namespace
+} // namespace
 
 struct GifExporter::Impl {
     GifFileType* gif{};
     QSize size{};
-    int delayCs{};  // frame delay in centiseconds
-    std::vector<GifByteType> red;    // planar buffers, reused across frames
+    int delayCs{};                // frame delay in centiseconds
+    std::vector<GifByteType> red; // planar buffers, reused across frames
     std::vector<GifByteType> green;
     std::vector<GifByteType> blue;
     std::vector<GifByteType> indices;
@@ -47,10 +50,10 @@ struct GifExporter::Impl {
     bool failed{};
 };
 
-GifExporter::GifExporter(GifExporter&& other) noexcept : impl_(std::exchange(other.impl_, nullptr)) {}
+GifExporter::GifExporter(GifExporter&& other) noexcept
+    : impl_(std::exchange(other.impl_, nullptr)) {}
 
-GifExporter& GifExporter::operator=(GifExporter&& other) noexcept
-{
+GifExporter& GifExporter::operator=(GifExporter&& other) noexcept {
     if (this != &other) {
         finish();
         impl_ = std::exchange(other.impl_, nullptr);
@@ -58,8 +61,7 @@ GifExporter& GifExporter::operator=(GifExporter&& other) noexcept
     return *this;
 }
 
-GifExporter::~GifExporter()
-{
+GifExporter::~GifExporter() {
     if (impl_ != nullptr) {
         finish();
         delete impl_;
@@ -67,8 +69,7 @@ GifExporter::~GifExporter()
 }
 
 std::optional<GifExporter> GifExporter::create(const std::filesystem::path& path, QSize size,
-                                               Options options, std::string* error)
-{
+                                               Options options, std::string* error) {
     if (size.isEmpty()) {
         if (error != nullptr) {
             *error = "GIF frame size must be positive";
@@ -107,10 +108,10 @@ std::optional<GifExporter> GifExporter::create(const std::filesystem::path& path
     bool loopOk = false;
     if (headerOk) {
         // Loop-count sub-block: 0x01, little-endian count (0 = loop forever).
-        const GifByteType loop[3] = {0x01,
-                                     static_cast<GifByteType>(options.loopCount & 0xff),
-                                     static_cast<GifByteType>(options.loopCount >> 8)};
-        loopOk = EGifPutExtensionBlock(gif, 3, loop) != GIF_ERROR &&
+        const std::array<GifByteType, 3> loop = {0x01,
+                                                 static_cast<GifByteType>(options.loopCount & 0xff),
+                                                 static_cast<GifByteType>(options.loopCount >> 8)};
+        loopOk = EGifPutExtensionBlock(gif, 3, loop.data()) != GIF_ERROR &&
                  EGifPutExtensionTrailer(gif) != GIF_ERROR;
     }
     if (!headerOk || !loopOk) {
@@ -138,8 +139,7 @@ std::optional<GifExporter> GifExporter::create(const std::filesystem::path& path
     return exporter;
 }
 
-bool GifExporter::addFrame(const QImage& frame)
-{
+bool GifExporter::addFrame(const QImage& frame) {
     if (impl_ == nullptr || impl_->finished) {
         return false;
     }
@@ -152,7 +152,7 @@ bool GifExporter::addFrame(const QImage& frame)
     const int width = rgb.width();
     const int height = rgb.height();
 
-    const std::size_t w = static_cast<std::size_t>(width);
+    const auto w = static_cast<std::size_t>(width);
     for (int y = 0; y < height; ++y) {
         const uchar* src = rgb.constScanLine(y);
         GifByteType* r = impl_->red.data() + static_cast<std::size_t>(y) * w;
@@ -168,21 +168,20 @@ bool GifExporter::addFrame(const QImage& frame)
 
     int colorMapSize = kPaletteSize;
     if (GifQuantizeBuffer(static_cast<unsigned>(width), static_cast<unsigned>(height),
-                          &colorMapSize, impl_->red.data(), impl_->green.data(),
-                          impl_->blue.data(), impl_->indices.data(),
-                          impl_->palette.data()) == GIF_ERROR) {
+                          &colorMapSize, impl_->red.data(), impl_->green.data(), impl_->blue.data(),
+                          impl_->indices.data(), impl_->palette.data()) == GIF_ERROR) {
         impl_->failed = true;
         return false;
     }
 
     // Graphics control extension: disposal + delay, no transparency.
-    const GifByteType gce[4] = {
+    const std::array<GifByteType, 4> gce = {
         static_cast<GifByteType>(kDisposalKeep << 2),
         static_cast<GifByteType>(impl_->delayCs & 0xff),
         static_cast<GifByteType>(impl_->delayCs >> 8),
         0x00,
     };
-    if (EGifPutExtension(impl_->gif, GRAPHICS_EXT_FUNC_CODE, 4, gce) == GIF_ERROR) {
+    if (EGifPutExtension(impl_->gif, GRAPHICS_EXT_FUNC_CODE, 4, gce.data()) == GIF_ERROR) {
         impl_->failed = true;
         return false;
     }
@@ -193,15 +192,16 @@ bool GifExporter::addFrame(const QImage& frame)
     while (roundedSize < colorMapSize) {
         roundedSize <<= 1;
     }
-    ColorMapObject* colorMap = GifMakeMapObject(roundedSize, impl_->palette.data());
+    auto* colorMap = GifMakeMapObject(roundedSize, impl_->palette.data());
     if (colorMap == nullptr) {
         impl_->failed = true;
         return false;
     }
-    const bool descOk = EGifPutImageDesc(impl_->gif, 0, 0, width, height, false, colorMap) != GIF_ERROR;
+    const bool descOk =
+        EGifPutImageDesc(impl_->gif, 0, 0, width, height, false, colorMap) != GIF_ERROR;
     bool linesOk = true;
     if (descOk) {
-        const std::size_t rowWidth = static_cast<std::size_t>(width);
+        const auto rowWidth = static_cast<std::size_t>(width);
         for (int y = 0; y < height; ++y) {
             if (EGifPutLine(impl_->gif,
                             impl_->indices.data() + static_cast<std::size_t>(y) * rowWidth,
@@ -219,8 +219,7 @@ bool GifExporter::addFrame(const QImage& frame)
     return true;
 }
 
-bool GifExporter::finish()
-{
+bool GifExporter::finish() {
     if (impl_ == nullptr || impl_->finished) {
         return !impl_ || !impl_->failed;
     }
@@ -231,4 +230,4 @@ bool GifExporter::finish()
     return closed && !impl_->failed;
 }
 
-}  // namespace itpixel
+} // namespace itpixel

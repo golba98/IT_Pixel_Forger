@@ -9,4 +9,4 @@ namespace itpixel {
 // root). Returns an empty string when the asset cannot be found.
 [[nodiscard]] QString defaultReferencePath();
 
-}  // namespace itpixel
+} // namespace itpixel

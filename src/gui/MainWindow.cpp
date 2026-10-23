@@ -37,14 +37,11 @@ constexpr int kMaxBlock = 1'024;
 
 const QColor kPreviewBackground = QColor(0x11, 0x11, 0x11);
 
-QString imageFilter()
-{
-    return QStringLiteral(
-        "Images (*.jpg *.jpeg *.png *.webp *.bmp *.gif);;All files (*)");
+QString imageFilter() {
+    return QStringLiteral("Images (*.jpg *.jpeg *.png *.webp *.bmp *.gif);;All files (*)");
 }
 
-QString formatDuration(qint64 ms)
-{
+QString formatDuration(qint64 ms) {
     if (ms < 0) {
         return QStringLiteral("--");
     }
@@ -52,16 +49,16 @@ QString formatDuration(qint64 ms)
         return QStringLiteral("%1 ms").arg(ms);
     }
     if (ms < 60'000) {
-        return QStringLiteral("%1 s").arg(QString::number(static_cast<double>(ms) / 1000.0, 'f', 1));
+        return QStringLiteral("%1 s").arg(
+            QString::number(static_cast<double>(ms) / 1000.0, 'f', 1));
     }
     return QStringLiteral("%1 m %2 s").arg(ms / 60'000).arg((ms / 1'000) % 60);
 }
 
-}  // namespace
+} // namespace
 
 MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent), defaultReferencePath_(itpixel::defaultReferencePath())
-{
+    : QMainWindow(parent), defaultReferencePath_(itpixel::defaultReferencePath()) {
     buildUi();
 
     worker_ = new EngineWorker;
@@ -83,20 +80,19 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->hide();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     workerThread_.quit();
     workerThread_.wait();
 }
 
-void MainWindow::buildUi()
-{
+void MainWindow::buildUi() {
     // ---- Left column: files and settings -------------------------------
     auto* filesGroup = new QGroupBox(tr("Images"), this);
     auto* filesLayout = new QFormLayout(filesGroup);
     filesLayout->setLabelAlignment(Qt::AlignRight);
 
     inputPathEdit_ = new QLineEdit(this);
+    inputPathEdit_->setObjectName(QStringLiteral("inputPath"));
     auto* inputBrowse = new QPushButton(tr("Browse..."), this);
     inputBrowse->setFixedWidth(96);
     connect(inputBrowse, &QPushButton::clicked, this, &MainWindow::browseInput);
@@ -107,6 +103,7 @@ void MainWindow::buildUi()
     filesLayout->addRow(tr("Input"), inputRow);
 
     referencePathEdit_ = new QLineEdit(this);
+    referencePathEdit_->setObjectName(QStringLiteral("referencePath"));
     auto* referenceBrowse = new QPushButton(tr("Browse..."), this);
     referenceBrowse->setFixedWidth(96);
     connect(referenceBrowse, &QPushButton::clicked, this, &MainWindow::browseReference);
@@ -136,9 +133,8 @@ void MainWindow::buildUi()
     blendSlider_ = new QSlider(Qt::Horizontal, this);
     blendSlider_->setRange(0, 100);
     blendSlider_->setValue(100);
-    blendSlider_->setToolTip(
-        tr("How strongly each block takes the reference colour.\n"
-           "0 keeps the sampled tile, 1 uses the plain target colour."));
+    blendSlider_->setToolTip(tr("How strongly each block takes the reference colour.\n"
+                                "0 keeps the sampled tile, 1 uses the plain target colour."));
     blendValueLabel_ = new QLabel(QStringLiteral("100%"), this);
     blendValueLabel_->setFixedWidth(48);
     connect(blendSlider_, &QSlider::valueChanged, this, &MainWindow::onBlendChanged);
@@ -169,6 +165,7 @@ void MainWindow::buildUi()
     actionsLayout->addWidget(cancelButton_);
 
     saveButton_ = new QPushButton(tr("Save image..."), this);
+    saveButton_->setObjectName(QStringLiteral("saveButton"));
     saveButton_->setMinimumHeight(32);
     saveButton_->setEnabled(false);
     connect(saveButton_, &QPushButton::clicked, this, &MainWindow::saveResult);
@@ -193,6 +190,7 @@ void MainWindow::buildUi()
     previewArea_->setPalette(areaPalette);
 
     previewLabel_ = new QLabel(previewArea_);
+    previewLabel_->setObjectName(QStringLiteral("previewLabel"));
     previewLabel_->setAlignment(Qt::AlignCenter);
     previewLabel_->setMinimumSize(320, 240);
     previewLabel_->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
@@ -230,8 +228,7 @@ void MainWindow::buildUi()
     setCentralWidget(central);
 }
 
-void MainWindow::browseInput()
-{
+void MainWindow::browseInput() {
     const QString path = QFileDialog::getOpenFileName(
         this, tr("Select input image"),
         QStandardPaths::writableLocation(QStandardPaths::PicturesLocation), imageFilter());
@@ -242,8 +239,7 @@ void MainWindow::browseInput()
     loadPreviewOfInput();
 }
 
-void MainWindow::browseReference()
-{
+void MainWindow::browseReference() {
     const QString path = QFileDialog::getOpenFileName(
         this, tr("Select reference image"),
         QStandardPaths::writableLocation(QStandardPaths::PicturesLocation), imageFilter());
@@ -252,8 +248,7 @@ void MainWindow::browseReference()
     }
 }
 
-void MainWindow::loadPreviewOfInput()
-{
+void MainWindow::loadPreviewOfInput() {
     QString error;
     const auto image = itpixel::MosaicEngine::loadImage(inputPathEdit_->text(), &error);
     if (!image.has_value()) {
@@ -267,8 +262,7 @@ void MainWindow::loadPreviewOfInput()
                               .arg(image->height()));
 }
 
-void MainWindow::startTransformation()
-{
+void MainWindow::startTransformation() {
     if (running_) {
         return;
     }
@@ -276,8 +270,7 @@ void MainWindow::startTransformation()
     const QString referencePath = referencePathEdit_->text();
 
     if (inputPath.trimmed().isEmpty()) {
-        QMessageBox::warning(this, tr("Missing input"),
-                             tr("Please choose an input image first."));
+        QMessageBox::warning(this, tr("Missing input"), tr("Please choose an input image first."));
         return;
     }
     if (!QFile::exists(inputPath)) {
@@ -314,8 +307,7 @@ void MainWindow::startTransformation()
     QMetaObject::invokeMethod(worker_, &EngineWorker::run, Qt::QueuedConnection);
 }
 
-void MainWindow::cancelTransformation()
-{
+void MainWindow::cancelTransformation() {
     if (running_) {
         worker_->requestCancel();
         cancelButton_->setEnabled(false);
@@ -323,8 +315,7 @@ void MainWindow::cancelTransformation()
     }
 }
 
-void MainWindow::saveResult()
-{
+void MainWindow::saveResult() {
     if (finalImage_.isNull()) {
         return;
     }
@@ -347,13 +338,11 @@ void MainWindow::saveResult()
     statusLabel_->setText(tr("Saved %1").arg(QDir::toNativeSeparators(path)));
 }
 
-void MainWindow::onWorkerStatus(const QString& status)
-{
+void MainWindow::onWorkerStatus(const QString& status) {
     statusLabel_->setText(status);
 }
 
-void MainWindow::onWorkerProgress(int percent, qint64 elapsedMs, qint64 etaMs)
-{
+void MainWindow::onWorkerProgress(int percent, qint64 elapsedMs, qint64 etaMs) {
     progressBar_->setValue(percent);
     QString time = QStringLiteral("Elapsed %1").arg(formatDuration(elapsedMs));
     if (etaMs >= 0) {
@@ -362,15 +351,13 @@ void MainWindow::onWorkerProgress(int percent, qint64 elapsedMs, qint64 etaMs)
     timeLabel_->setText(time);
 }
 
-void MainWindow::onWorkerPreview(const QImage& preview)
-{
+void MainWindow::onWorkerPreview(const QImage& preview) {
     if (finalImage_.isNull()) {
         showImage(preview);
     }
 }
 
-void MainWindow::onWorkerFinished(const QImage& finalImage)
-{
+void MainWindow::onWorkerFinished(const QImage& finalImage) {
     finalImage_ = finalImage;
     showImage(finalImage);
     progressBar_->setValue(100);
@@ -379,34 +366,29 @@ void MainWindow::onWorkerFinished(const QImage& finalImage)
     setRunning(false);
 }
 
-void MainWindow::onWorkerCancelled()
-{
+void MainWindow::onWorkerCancelled() {
     statusLabel_->setText(tr("Cancelled."));
     timeLabel_->clear();
     setRunning(false);
 }
 
-void MainWindow::onWorkerFailed(const QString& message)
-{
+void MainWindow::onWorkerFailed(const QString& message) {
     QMessageBox::warning(this, tr("Transformation error"), message);
     statusLabel_->setText(tr("Failed."));
     timeLabel_->clear();
     setRunning(false);
 }
 
-void MainWindow::onBlendChanged(int value)
-{
+void MainWindow::onBlendChanged(int value) {
     blendValueLabel_->setText(QStringLiteral("%1%").arg(value));
 }
 
-void MainWindow::showImage(const QImage& image)
-{
+void MainWindow::showImage(const QImage& image) {
     previewImage_ = image;
     refreshPreview();
 }
 
-void MainWindow::refreshPreview()
-{
+void MainWindow::refreshPreview() {
     if (previewImage_.isNull()) {
         previewLabel_->setPixmap(QPixmap());
         return;
@@ -417,23 +399,20 @@ void MainWindow::refreshPreview()
     }
     QPixmap pixmap = QPixmap::fromImage(previewImage_);
     pixmap = pixmap.scaled(available.width(), available.height(), Qt::KeepAspectRatio,
-                            Qt::SmoothTransformation);
+                           Qt::SmoothTransformation);
     previewLabel_->setPixmap(pixmap);
     // Center the label inside the preview area.
-    previewLabel_->setGeometry(
-        QRect(QPoint((available.width() - pixmap.width()) / 2,
-                     (available.height() - pixmap.height()) / 2),
-              pixmap.size()));
+    previewLabel_->setGeometry(QRect(QPoint((available.width() - pixmap.width()) / 2,
+                                            (available.height() - pixmap.height()) / 2),
+                                     pixmap.size()));
 }
 
-void MainWindow::resizeEvent(QResizeEvent* event)
-{
+void MainWindow::resizeEvent(QResizeEvent* event) {
     QMainWindow::resizeEvent(event);
     refreshPreview();
 }
 
-void MainWindow::closeEvent(QCloseEvent* event)
-{
+void MainWindow::closeEvent(QCloseEvent* event) {
     worker_->requestCancel();
     workerThread_.quit();
     if (!workerThread_.wait(5'000)) {
@@ -443,8 +422,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
     QMainWindow::closeEvent(event);
 }
 
-void MainWindow::setRunning(bool running)
-{
+void MainWindow::setRunning(bool running) {
     running_ = running;
     startButton_->setEnabled(!running);
     cancelButton_->setEnabled(running);
@@ -461,8 +439,7 @@ void MainWindow::setRunning(bool running)
     }
 }
 
-itpixel::MosaicSettings MainWindow::settingsFromUi() const
-{
+itpixel::MosaicSettings MainWindow::settingsFromUi() const {
     itpixel::MosaicSettings settings;
     settings.blockSize = blockSizeSpin_->value();
     settings.animationSteps = stepsSpin_->value();

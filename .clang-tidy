@@ -1,0 +1,40 @@
+# Pragmatic static analysis configuration for IT Pixel Generator.
+# Focused checks only; the full cert/cppcoreguidelines set is too noisy for
+# Qt-based image code (raw uchar buffers, Qt API idioms).
+Checks: >
+  bugprone-*,
+  performance-*,
+  modernize-*,
+  readability-identifier-naming,
+  readability-const-return-type,
+  readability-inconsistent-declaration-parameter-name,
+  cppcoreguidelines-init-variables,
+  cppcoreguidelines-narrowing-conversions,
+  cppcoreguidelines-pro-type-member-init,
+  misc-unused-parameters,
+  -modernize-use-trailing-return-type,
+  -modernize-use-ranges,
+  -bugprone-easily-swappable-parameters
+
+WarningsAsErrors: ''
+HeaderFilterRegex: 'include/itpixel/.*'
+FormatStyle: file
+CheckOptions:
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+  - key: readability-identifier-naming.ParameterCase
+    value: camelBack
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMemberCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: _
+  - key: readability-identifier-naming.ConstexprVariablePrefix
+    value: k

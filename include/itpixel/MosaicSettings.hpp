@@ -28,9 +28,9 @@ struct MosaicSettings {
     // Chosen so that per-block bookkeeping stays well under 1 GiB even for
     // 8K inputs. The original Python code attempted a similar correction but
     // its 60M-pixel threshold made it a no-op for nearly all images.
-    static constexpr std::size_t maxWorkingBlocks = 8'000'000;
+    static constexpr std::size_t kMaxWorkingBlocks = 8'000'000;
 
     [[nodiscard]] static MosaicSettings validated(MosaicSettings settings);
 };
 
-}  // namespace itpixel
+} // namespace itpixel

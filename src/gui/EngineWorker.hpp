@@ -1,8 +1,8 @@
 #pragma once
 
-#include <atomic>
-#include <QObject>
 #include <QImage>
+#include <QObject>
+#include <atomic>
 
 #include "itpixel/MosaicEngine.hpp"
 

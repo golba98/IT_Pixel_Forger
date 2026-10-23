@@ -6,14 +6,13 @@
 
 namespace itpixel {
 
-QString defaultReferencePath()
-{
+QString defaultReferencePath() {
     const QString appDir = QCoreApplication::applicationDirPath();
     const QStringList candidates = {
-        QDir(appDir).filePath(QStringLiteral("../assets/reference/it.jpeg")),   // build tree
-        QDir(appDir).filePath(QStringLiteral("assets/reference/it.jpeg")),      // flat layout
-        QDir(appDir).filePath(QStringLiteral("../share/itpixel/it.jpeg")),      // installed
-        QDir::current().filePath(QStringLiteral("assets/reference/it.jpeg")),    // repo root
+        QDir(appDir).filePath(QStringLiteral("../assets/reference/it.jpeg")), // build tree
+        QDir(appDir).filePath(QStringLiteral("assets/reference/it.jpeg")),    // flat layout
+        QDir(appDir).filePath(QStringLiteral("../share/itpixel/it.jpeg")),    // installed
+        QDir::current().filePath(QStringLiteral("assets/reference/it.jpeg")), // repo root
     };
     for (const QString& candidate : candidates) {
         if (QFile::exists(candidate)) {
@@ -23,4 +22,4 @@ QString defaultReferencePath()
     return {};
 }
 
-}  // namespace itpixel
+} // namespace itpixel

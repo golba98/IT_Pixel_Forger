@@ -75,7 +75,7 @@ private:
     EngineWorker* worker_{};
     QString defaultReferencePath_;
 
-    QImage previewImage_;   // downscaled frame used for display
-    QImage finalImage_;     // full-resolution result
+    QImage previewImage_; // downscaled frame used for display
+    QImage finalImage_;   // full-resolution result
     bool running_{false};
 };
