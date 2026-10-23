@@ -186,9 +186,10 @@ bool GifExporter::addFrame(const QImage& frame) {
         return false;
     }
 
-    // giflib only accepts color maps whose size is a power of two; entries
-    // between the quantized size and the rounded size stay unused (black).
-    int roundedSize = 1;
+    // giflib only accepts color maps whose size is a power of two, and GIF
+    // needs at least a 2-entry map; entries between the quantized size and
+    // the rounded size stay unused (black).
+    int roundedSize = 2;
     while (roundedSize < colorMapSize) {
         roundedSize <<= 1;
     }
