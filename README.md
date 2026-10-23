@@ -1,111 +1,165 @@
-# 11-IT PiXELS
+# IT Pixel Generator
 
-11-IT PiXELS is a small Python image-mosaic tool. It transforms an input image by rebuilding it from tiles sampled from a reference image, with a Tkinter GUI for live preview and a CLI helper for generating an animated GIF.
+[![CI](https://github.com/golba98/IT_Pixel_Generator/actions/workflows/ci.yml/badge.svg)](https://github.com/golba98/IT_Pixel_Generator/actions/workflows/ci.yml)
+
+IT Pixel Generator rebuilds any image as a mosaic of blocks sampled from a
+reference image, animated as the transformation happens. It ships as a native
+desktop application with a live preview and a command line tool that exports
+the whole transformation as an animated GIF.
+
+The engine is written from scratch in modern C++23 — no Python runtime is
+involved — and is a complete rewrite of the original Python implementation,
+preserving its visual behaviour while being roughly **12x faster** end to
+end.
+
+![GUI screenshot](docs/assets/screenshot.png)
+
+The animation below was produced by the CLI with the bundled reference
+image (blend 1.0, block size 2):
+
+![Example transformation](docs/assets/example.gif)
 
 ## Features
 
-- Live GUI preview of the mosaic transformation.
-- Configurable block size, animation speed, and color blend strength.
-- Save the final GUI result as JPEG or PNG.
-- CLI GIF export for the full transformation process.
-- Automatic block-size scaling for very large images.
-- Default reference image support through the tracked `it.jpeg` asset.
+- Native C++23 engine — fast, deterministic (seedable), and dependency-light
+- Desktop GUI (Qt 6 Widgets) with live transformation preview, progress,
+  elapsed time, and estimated remaining time
+- Responsive UI and instant cancellation: the engine runs on a worker
+  thread, never on the GUI thread
+- Custom reference images, adjustable block size, animation steps, and
+  colour blend
+- Save results as PNG or JPEG
+- Animated GIF export via the CLI, verified with real decoders
+- Runs on Linux and Windows
 
-## Tech Stack
+## Requirements
 
-- Python 3.8+
-- Tkinter for the desktop GUI
-- Pillow for image loading, processing, and export
+- CMake 3.25+
+- A C++23 compiler: GCC 12+, Clang 16+, or MSVC 2022
+- Qt 6.2+ (`qt6-base` — `QtGui` and `QtWidgets`)
 
-## Setup
+giflib (GIF encoding) and doctest (testing) are vendored in
+`third_party/` — nothing else to install.
 
-Create and activate a virtual environment:
+## Build
+
+Fedora Linux:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+sudo dnf install cmake ninja-build gcc-c++ qt6-qtbase-devel
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+ctest --test-dir build --output-on-failure
 ```
 
-On Windows PowerShell:
+Windows (MSVC): install Qt 6 for your MSVC version, then:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=C:\Qt\6.8.3\msvc2022_64
+cmake --build build --parallel
+ctest --test-dir build --output-on-failure
 ```
 
-Install dependencies:
+Detailed platform notes, build options, and troubleshooting are in
+[docs/BUILDING.md](docs/BUILDING.md).
+
+## Running
+
+Desktop GUI:
 
 ```bash
-python -m pip install -r requirements.txt
+build/src/gui/it-pixel-gui
 ```
 
-Tkinter is usually bundled with Python. If it is missing on Linux, install your distribution's Tkinter package, such as `python3-tk` on Debian or Ubuntu.
-
-## Run The Project
-
-Start the GUI:
+Command line — generate an animated GIF of a full transformation:
 
 ```bash
-python gui_converter.py
+build/it-pixel-cli path/to/input.png
 ```
 
-On Windows, you can also run:
-
-```bat
-run_gui.bat
-```
-
-Generate an animated GIF from the CLI:
+Useful options (see `it-pixel-cli --help` for all of them):
 
 ```bash
-python image_converter.py path/to/input-image.png
+build/it-pixel-cli input.png \
+    --output "my transformation.gif" \
+    --reference assets/reference/it.jpeg \
+    --block-size 2 --steps 60 --blend 1.0 \
+    --fps 15 --frame-sample 2 --seed 42
 ```
 
-Useful CLI options:
+| Option | Meaning |
+|---|---|
+| `--output` | Output GIF path (default: `it_pixels_transform.gif` next to the input) |
+| `--reference` | Reference image (default: bundled `it.jpeg`) |
+| `--block-size` | Mosaic block edge in pixels (default 1) |
+| `--steps` | Animation batches (default 120) |
+| `--blend` | How strongly blocks take the reference colour; `1.0` = flat reference colours, lower values keep the sampled image content (default 1.0) |
+| `--fps` | GIF playback rate (default 25) |
+| `--frame-sample` | Keep every Nth animation frame to shrink large outputs |
+| `--seed` | Fix the random jitter for reproducible results |
 
-```bash
-python image_converter.py path/to/input-image.png --output output.gif --reference it.jpeg --steps 120 --block-size 1 --blend 0.85
-```
+Exit codes: `0` success, `1` processing error, `2` usage error.
 
-## Tests And Validation
+## How it works
 
-There is no automated test suite yet. For a basic validation pass, run:
+1. The input image is cut into `block_size` tiles; each tile's average
+   colour and luminance are recorded.
+2. The reference image is resized to the input size and cut into the same
+   grid; each block's colour, luminance, and hue are recorded, and blocks
+   are sorted by hue — this produces the animation's colour-sweep order.
+3. Blocks are revealed in batches: for each one, the tile whose luminance
+   best matches the target is selected (with a little seeded random
+   jitter), optionally blended toward the target colour, and painted onto
+   the canvas. Each batch is highlighted with a shimmer effect.
+4. The CLI streams every frame into a GIF with an adaptive 256-colour
+   palette per frame; the GUI shows the frames live and lets you save the
+   final result.
 
-```bash
-python -m compileall -q gui_converter.py image_converter.py
-```
+For the full picture see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-If you install development tools, these checks are also recommended:
-
-```bash
-python -m ruff check .
-python -m black --check .
-python -m pytest
-```
-
-## Project Structure
+## Project structure
 
 ```text
 .
-├── gui_converter.py      # Tkinter GUI
-├── image_converter.py    # Mosaic engine and CLI GIF export
-├── it.jpeg               # Default reference image
-├── requirements.txt      # Runtime Python dependencies
-├── run_gui.bat           # Windows launcher
-└── README.md
+├── assets/reference/     bundled default reference image
+├── include/itpixel/      public core headers
+├── src/core/             mosaic engine, GIF exporter, path helpers
+├── src/cli/              it-pixel-cli
+├── src/gui/              it-pixel-gui (widgets, worker thread, theme)
+├── tests/                doctest suite + headless GUI smoke test
+├── third_party/          vendored giflib and doctest (MIT)
+├── docs/                 developer documentation
+└── cmake/                shared CMake helpers
 ```
 
-## Environment Variables
+## Development
 
-No environment variables are required.
+Build, test, format, and run clang-tidy — see
+[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Pull requests should keep the
+test suite and static analysis clean; CI builds GCC/Linux and MSVC/Windows
+configurations on every push.
 
-## Notes And Limitations
+## Performance
 
-- Large images can be slow and memory-intensive, especially with a block size of `1`.
-- CLI GIF export stores frames in memory before saving, so use `--frame-sample` for very large outputs.
-- The default `it.jpeg` reference image is included in the repository. Confirm that you have the right to publish or redistribute it before making the repository public.
-- Generated images, local virtual environments, caches, logs, and local database files should stay uncommitted.
+Measured on one Linux development machine (full pipeline: engine + animated
+GIF export, 120 steps, 25 fps, frame-sample 1), best of repeated runs:
+
+| Workload | Original Python | This rewrite |
+|---|---|---|
+| 1280x720, block size 1 | 26.2 s | 2.2 s (~12x) |
+| 640x360, block size 2 | 3.4 s | 0.26 s (~13x) |
+
+Your numbers will vary; the CLI prints the exact parameters it used.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). giflib and doctest (vendored in
+`third_party/`) are MIT as well. Qt is available under LGPL/GPLv3 (or
+commercial) terms from The Qt Company; when you distribute binaries built
+with the open-source Qt, its licenses apply to Qt's parts.
+
+**About the bundled reference image:** `assets/reference/it.jpeg` predates
+this rewrite. It appears to be a promotional still related to the film
+referenced by the project name, and its redistribution rights have not been
+verified. Replace it with an image you have the rights to if you plan to
+redistribute this repository's assets.
