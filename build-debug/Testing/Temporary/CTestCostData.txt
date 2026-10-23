@@ -1,3 +1,0 @@
-itpixel_tests 2 0.0276002
-itpixel_gui_smoke 2 0.023795
----
