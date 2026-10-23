@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(ITPixelGenerator
+project(ITPixelForger
     VERSION 2.0.0
-    DESCRIPTION "IT Pixel Generator - mosaic transformation engine, GUI and CLI"
+    DESCRIPTION "IT Pixel Forger - mosaic transformation engine, GUI and CLI"
     LANGUAGES C CXX)
 
 # ---------------------------------------------------------------------------

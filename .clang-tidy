@@ -1,4 +1,4 @@
-# Pragmatic static analysis configuration for IT Pixel Generator.
+# Pragmatic static analysis configuration for IT Pixel Forger.
 # Focused checks only; the full cert/cppcoreguidelines set is too noisy for
 # Qt-based image code (raw uchar buffers, Qt API idioms).
 Checks: >

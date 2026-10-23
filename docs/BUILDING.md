@@ -1,4 +1,4 @@
-# Building IT Pixel Generator
+# Building IT Pixel Forger
 
 The project uses CMake (3.25+) with the C++23 language standard.
 

@@ -1,6 +1,6 @@
 # Architecture
 
-This document explains how IT Pixel Generator is structured, how the mosaic
+This document explains how IT Pixel Forger is structured, how the mosaic
 transformation works, and where the thread boundaries are.
 
 ## Overview

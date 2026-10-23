@@ -75,7 +75,7 @@ MainWindow::MainWindow(QWidget* parent)
     connect(worker_, &EngineWorker::failed, this, &MainWindow::onWorkerFailed);
 
     referencePathEdit_->setText(defaultReferencePath_);
-    setWindowTitle(QStringLiteral("IT Pixel Generator"));
+    setWindowTitle(QStringLiteral("IT Pixel Forger"));
     resize(1180, 760);
     statusBar()->hide();
 }

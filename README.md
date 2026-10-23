@@ -1,16 +1,16 @@
-# IT Pixel Generator
+# IT Pixel Forger
 
-[![CI](https://github.com/golba98/IT_Pixel_Generator/actions/workflows/ci.yml/badge.svg)](https://github.com/golba98/IT_Pixel_Generator/actions/workflows/ci.yml)
+[![CI](https://github.com/golba98/IT_Pixel_Forger/actions/workflows/ci.yml/badge.svg)](https://github.com/golba98/IT_Pixel_Forger/actions/workflows/ci.yml)
 
-IT Pixel Generator rebuilds any image as a mosaic of blocks sampled from a
+IT Pixel Forger rebuilds any image as a mosaic of blocks sampled from a
 reference image, animated as the transformation happens. It ships as a native
 desktop application with a live preview and a command line tool that exports
 the whole transformation as an animated GIF.
 
 The engine is written from scratch in modern C++23 — no Python runtime is
-involved — and is a complete rewrite of the original Python implementation,
-preserving its visual behaviour while being roughly **12x faster** end to
-end.
+involved — and is a complete rewrite of the original Python implementation
+(then called IT Pixel Generator), preserving its visual behaviour while being
+roughly **12x faster** end to end.
 
 ![GUI screenshot](docs/assets/screenshot.png)
 

@@ -36,7 +36,7 @@ bool parseDouble(const std::string& text, double& out) {
 } // namespace
 
 std::string CliOptions::helpText(const std::string& programName) {
-    return "IT Pixel Generator CLI - mosaic transformation with animated GIF export\n"
+    return "IT Pixel Forger CLI - mosaic transformation with animated GIF export\n"
            "\n"
            "Usage:\n"
            "  " +
