@@ -1,0 +1,35 @@
+{
+  "owner": "golba98",
+  "private_git_blobs": [],
+  "private_hashes": [],
+  "private_paths": [
+    ".agents/scratch/",
+    ".agents/teamwork/",
+    ".private/",
+    "docs/_reports/",
+    "docs/tmp/"
+  ],
+  "protected_paths": [
+    ".github/documentation-policy.json",
+    "scripts/check_documentation.py",
+    "scripts/test_documentation_policy.py",
+    ".gitignore",
+    ".npmignore",
+    ".dockerignore",
+    "MANIFEST.in",
+    "scripts/documentation-policy.json",
+    "scripts/check-docs.mjs",
+    "scripts/install-hooks.mjs",
+    "tools/stage-workspace.py",
+    "scripts/package.mjs"
+  ],
+  "public_markdown": {
+    "README.md": "9b617bf9f62838ed8b9a88101a57a2ab3c2d06236fb7c1f59193ebc57e64fe33",
+    "SECURITY.md": "425767ee42c9470f0839fa23dce7601a2c59baaa8f97cf2a26849dff44c26724",
+    "docs/ARCHITECTURE.md": "8ed30bd2667027ebb8a63a02ace48303e72374036cdcb12eae06756cd65d103b",
+    "docs/BUILDING.md": "d844f20570a643b898bc4e50f7390da06089a4d758c80d7c0054e71ed08d5f77",
+    "docs/DEVELOPMENT.md": "8ddde2bb3d69da3aace826d88c09878a7be8d743ee8fc009b0fd9200964509fa"
+  },
+  "repository": "golba98/IT_Pixel_Forger",
+  "version": 1
+}
